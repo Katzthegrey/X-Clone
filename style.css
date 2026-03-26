@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #e7e9ea;
+}
+
+/* Make the row use flex to accommodate fixed-width left aside */
+.row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+/* Left Aside Styling - Fixed width instead of percentage */
+.left-aside {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: auto;
+    flex-shrink: 0;
+    padding-left: 150px;
+    padding-right: 0;
+}
+
+.nav-container {
+    max-width: 275px;
+    width: 100%;
+}
+
+/* Nav Item Styling */
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    width: fit-content;
+    min-width: 50px;
+}
+
+.nav-item:hover {
+    background-color: rgba(231, 233, 234, 0.1);
+}
+
+.nav-icon {
+    font-size: 26px;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e7e9ea;
+}
+
+.nav-icon .fa-regular,
+.nav-icon .far {
+    font-weight: 400;
+}
+
+/* Active state - filled icons */
+.nav-item.active .nav-icon i {
+    font-weight: 900;
+}
+
+.nav-text {
+    font-size: 20px;
+    font-weight: 400;
+    color: #e7e9ea;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+}
+
+.nav-item.active .nav-text {
+    font-weight: 700;
+}
+
+/* Logo styling */
+.logo-img {
+    width: 28px;
+    height: 28px;
+}
+
+/* Badge styling - smaller pill-shaped */
+.badge-off {
+    background-color: #1d9bf0;
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 9999px;
+    margin-left: 6px;
+    letter-spacing: 0;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* Tweet Button */
+.tweet-btn {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 9999px;
+    padding: 14px 24px;
+    font-weight: 700;
+    font-size: 17px;
+    transition: background-color 0.2s;
+    width: 100%;
+    max-width: 225px;
+}
+
+.tweet-btn:hover {
+    background-color: #1a8cd8;
+}
+
+/* User profile section */
+.user-profile {
+    margin-top: auto;
+}
+
+.user-name {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.username {
+    font-size: 13px;
+}
+
+.more-icon {
+    font-size: 18px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2f3336;
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3e4144;
+}
+
+/* Main Content Styling */
+.main-content {
+    border-left: 1px solid #2f3336;
+    border-right: 1px solid #2f3336;
+    min-height: 100vh;
+    flex: 1;
+    overflow-x: hidden;
+}
+
+/* Right Aside Styling */
+.right-aside {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 0 16px;
+    flex-shrink: 0;
+}
+
+/* Placeholder content */
+.placeholder-content {
+    margin-top: 100px;
+}
+
+/* Text secondary color */
+.text-secondary {
+    color: #71767b !important;
+}
+
+/* Link styling */
+a {
+    text-decoration: none;
+    color: #1d9bf0;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design - Simplified for now */
+@media (max-width: 1400px) {
+    .left-aside {
+        padding-left: 80px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .left-aside {
+        padding-left: 40px;
+    }
+}
+
+@media (max-width: 992px) {
+    .left-aside {
+        padding-left: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .left-aside {
+        padding-left: 12px;
+    }
+    
+    .nav-text {
+        display: none;
+    }
+    
+    .nav-item {
+        width: auto;
+        justify-content: center;
+    }
+    
+    .badge-off {
+        display: none;
+    }
+    
+    .tweet-btn {
+        max-width: 52px;
+        padding: 12px;
+    }
+    
+    .tweet-btn span {
+        display: none;
+    }
+    
+    .tweet-btn i {
+        margin: 0 !important;
+    }
+}
