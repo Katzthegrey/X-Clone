@@ -1,120 +1,2104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <title>Formerly Twitter</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="container-fluid px-0">
-        <div class="row g-0">
-            <!-- Left Aside - Navigation (removed Bootstrap column classes) -->
-            <aside class="left-aside">
-                <div class="d-flex flex-column justify-content-between h-100 py-2 nav-container">
+      <div class="row g-0">
+        <!-- Left Aside  -->
+        <aside class="left-aside">
+          <div
+            class="d-flex flex-column justify-content-between h-100 py-2 nav-container"
+          >
+            <div>
+              <!-- Logo -->
+              <div class="nav-item mb-2">
+                <div class="nav-icon">
+                  <img src="Repos/Logo.svg" alt="logo" class="" />
+                </div>
+              </div>
+
+              <!-- Navigation Items with X-style outlined icons -->
+              <div class="nav-item active mt-2" data-nav="home">
+                <div class="nav-icon"><i class="fas fa-home"></i></div>
+                <span class="nav-text">Home</span>
+              </div>
+
+              <div class="nav-item" data-nav="explore">
+                <div class="nav-icon"><i class="fas fa-search"></i></div>
+                <span class="nav-text">Explore</span>
+              </div>
+
+              <div class="nav-item" data-nav="notifications">
+                <div class="nav-icon"><i class="far fa-bell"></i></div>
+                <span class="nav-text">Notifications</span>
+              </div>
+
+              <div class="nav-item" data-nav="messages">
+                <div class="nav-icon"><i class="far fa-envelope"></i></div>
+                <span class="nav-text">Messages</span>
+              </div>
+
+              <div class="nav-item" data-nav="grok">
+                <div class="nav-icon">
+                  <img src="Repos/Grok.svg" alt="grok" class="" />
+                </div>
+                <span class="nav-text">Grok</span>
+              </div>
+
+              <div class="nav-item" data-nav="bookmarks">
+                <div class="nav-icon"><i class="far fa-bookmark"></i></div>
+                <span class="nav-text">Bookmarks</span>
+              </div>
+
+              <div class="nav-item" data-nav="premium">
+                <div class="nav-icon">
+                  <img src="Repos/Logo.svg" alt="premium" class="" />
+                </div>
+                <span class="nav-text">Premium</span>
+                <span class="badge-off">50% off</span>
+              </div>
+
+              <div class="nav-item" data-nav="profile">
+                <div class="nav-icon"><i class="far fa-user"></i></div>
+                <span class="nav-text">Profile</span>
+              </div>
+
+              <div class="nav-item" data-nav="more">
+                <div class="nav-icon"><i class="fas fa-ellipsis-h"></i></div>
+                <span class="nav-text">More</span>
+              </div>
+
+              <!-- Post Button -->
+              <div class="mt-0 mb-4">
+                <button class="tweet-btn" id="sidebar-post-btn">
+                  <i class="fas fa-feather-alt me-2 d-md-none"></i>
+                  <span class="d-none d-md-inline">Post</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- User Profile -->
+            <div class="nav-item mb-3 w-100 user-profile">
+              <img
+                src="Repos/User.jpg"
+                alt="profile"
+                class="profile-img rounded-circle"
+              />
+              <div class="d-none d-md-block flex-grow-1">
+                <div class="fw-bold user-name">Katz</div>
+                <div class="text-secondary username">@Kxtz23</div>
+              </div>
+              <div class="d-none d-md-block">
+                <i class="fas fa-ellipsis-h more-icon"></i>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Section -->
+        <main class="col-md-6 col-lg-7 main-content">
+          <div class="sticky-navbar">
+            <div class="nav-links" id="top-feed-tabs">
+              <button class="nav-link active" data-feed="for-you">For you</button>
+              <button class="nav-link" data-feed="following">Following</button>
+              <button class="nav-link" data-feed="communities">Communities</button>
+            </div>
+          </div>
+
+          <!-- Tweet Composer -->
+          <section id="tweet-composer-section" class="border-bottom border-secondary">
+            <div class="d-flex gap-3 p-3">
+              <img src="Repos/User.jpg" alt="profile" class="profile-img rounded-circle" />
+              <div class="flex-grow-1">
+                <textarea id="tweet-input" class="update-text text-secondary w-100 bg-transparent border-0" rows="1" placeholder="What's happening?!"></textarea>
+                <div class="d-flex align-items-center gap-2 flex-wrap mt-2">
+                  <button class="action-btn d-flex align-items-center justify-content-center rounded-circle p-2">
+                    <i class="far fa-image"></i>
+                  </button>
+                  <button class="action-btn d-flex align-items-center justify-content-center rounded-circle p-2">
+                    <i class="fas fa-video"></i>
+                  </button>
+                  <button class="action-btn d-flex align-items-center justify-content-center rounded-circle p-2">
+                    <img src="Repos/Grok.svg" alt="grok" class="grok-action" />
+                  </button>
+                  <button class="action-btn d-flex align-items-center justify-content-center rounded-circle p-2">
+                    <i class="fas fa-poll"></i>
+                  </button>
+                  <button class="action-btn d-flex align-items-center justify-content-center rounded-circle p-2">
+                    <i class="far fa-face-smile"></i>
+                  </button>
+                  <button class="action-btn d-flex align-items-center justify-content-center rounded-circle p-2">
+                    <i class="far fa-calendar"></i>
+                  </button>
+                  <button class="action-btn d-flex align-items-center justify-content-center rounded-circle p-2">
+                    <i class="fas fa-location-dot"></i>
+                  </button>
+                  <button class="action-btn d-flex align-items-center justify-content-center rounded-circle p-2">
+                    <i class="far fa-flag"></i>
+                  </button>
+                  <button id="post-tweet-btn" class="post-btn ms-auto px-4 py-2 rounded-pill fw-bold border-0">Post</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Feed Container (Populated by JavaScript) -->
+          <section id="feed-container" class="feed"></section>
+        </main>
+
+        <!-- Right Aside -->
+        <aside class="col-lg-4 d-none d-lg-block right-aside">
+          <div class="right-aside-inner">
+            <!-- Search Bar -->
+            <div class="search-bar-container mb-4">
+              <div class="position-relative">
+                <i class="fas fa-search position-absolute start-0 top-50 translate-middle-y ms-3 text-secondary"></i>
+                <input type="search" placeholder="Search" class="search-input w-100 rounded-pill border-0 py-2 ps-5 pe-3" id="search-input">
+              </div>
+            </div>
+
+            <!-- Subscribe to Premium Card -->
+            <div class="premium-card bg-secondary bg-opacity-10 rounded-3 p-4 mb-4">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <h4 class="fw-bold mb-0">Subscribe to Premium</h4>
+                <span class="premium-badge  text-white px-1 py-0 rounded-1 fw-semibold opacity-70">50%off</span>
+              </div>
+              <p class="text-secondary mb-3 small">Get rid of ads, see your analytics, boost your replies and unlock 20+ features.</p>
+              <button class="subscribe-btn bg-primary text-white rounded-pill px-4 py-2 fw-bold border-0">Subscribe</button>
+            </div>
+
+            <!-- What's Happening / Today's News -->
+            <div class="trending-card bg-secondary bg-opacity-10 rounded-3 overflow-hidden mb-4">
+              <div class="d-flex align-items-center justify-content-between p-4 border-bottom border-secondary">
+                <h4 class="fw-bold mb-0">What's happening</h4>
+                <i class="fas fa-ellipsis-h text-secondary"></i>
+              </div>
+              
+              <!-- Trending Item 1 -->
+              <div class="trending-item p-4 border-bottom border-secondary hover-bg">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div class="flex-grow-1">
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                      <span class="text-secondary small">1 · Trending in Sports</span>
+                    </div>
+                    <h6 class="fw-bold mb-2">Brazil National Football Team Loses 2-1 to 10-Man France in USA Match</h6>
+                    <div class="d-flex align-items-center gap-3 mt-2">
+                      <span class="text-secondary small"><i class="far fa-clock me-1"></i>6h ago</span>
+                      <span class="text-secondary small"><i class="far fa-comment me-1"></i>2.6K posts</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Show More Link -->
+              <div class="show-more p-4 hover-bg rounded-bottom">
+                <a href="#" class="text-primary text-decoration-none fw-semibold">Show more</a>
+              </div>
+            </div>
+
+            <!-- Who to Follow Section -->
+            <div class="follow-card bg-secondary bg-opacity-10 rounded-3 overflow-hidden mb-4">
+              <div class="p-4 border-bottom border-secondary">
+                <h4 class="fw-bold mb-0">Who to follow</h4>
+              </div>
+              
+              <!-- Follow Suggestion 1 -->
+              <div class="follow-item p-4 border-bottom border-secondary hover-bg">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex gap-3">
+                    <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center placeholder-avatar">
+                      <i class="fas fa-user fa-lg text-secondary"></i>
+                    </div>
                     <div>
-                        <!-- Logo -->
-                        <div class="nav-item mb-2">
-                            <div class="nav-icon">
-                                <img src="Repos/Logo.svg" alt="logo" class="">
-                            </div>
-                        </div>
-                        
-                        <!-- Navigation Items with X-style outlined icons -->
-                        <div class="nav-item active mt-2">
-                            <div class="nav-icon"><i class="fas fa-home"></i></div>
-                            <span class="nav-text">Home</span>
-                        </div>
-                        
-                        <div class="nav-item">
-                            <div class="nav-icon"><i class="fas fa-search"></i></div>
-                            <span class="nav-text">Explore</span>
-                        </div>
-                        
-                        <div class="nav-item">
-                            <div class="nav-icon"><i class="far fa-bell"></i></div>
-                            <span class="nav-text">Notifications</span>
-                        </div>
-                        
-                        <div class="nav-item">
-                            <div class="nav-icon"><i class="far fa-envelope"></i></div>
-                            <span class="nav-text">Messages</span>
-                        </div>
-
-                        <div class="nav-item">
-                            <div class="nav-icon">
-                               <img src="Repos/Grok.svg" alt="grok" class="">
-                            </div>
-                            <span class="nav-text">Grok</span>
-                        </div>
-                        
-                        <div class="nav-item">
-                            <div class="nav-icon"><i class="far fa-bookmark"></i></div>
-                            <span class="nav-text">Bookmarks</span>
-                            <span class="badge-off">50% off</span>
-                        </div>
-
-                        <div class="nav-item">
-                            <div class="nav-icon">
-                                <img src="Repos/Logo.svg" alt="premium" class="">
-                            </div>
-                            <span class="nav-text">Premium</span>
-                        </div>
-                        
-                        <div class="nav-item">
-                            <div class="nav-icon"><i class="far fa-user"></i></div>
-                            <span class="nav-text">Profile</span>
-                        </div>
-                        
-                        <div class="nav-item">
-                            <div class="nav-icon"><i class="fas fa-ellipsis-h"></i></div>
-                            <span class="nav-text">More</span>
-                        </div>
-                        
-                        <!-- Post Button -->
-                        <div class="mt-4">
-                            <button class="tweet-btn">
-                                <i class="fas fa-feather-alt me-2 d-md-none"></i>
-                                <span class="d-none d-md-inline">Post</span>
-                            </button>
-                        </div>
+                      <div class="d-flex align-items-center gap-1">
+                        <span class="fw-bold">SportsCenter</span>
+                        <img src="Repos/Checkmark.svg" alt="verified" class="checkmark-icon">
+                      </div>
+                      <div class="text-secondary small">@SportsCenter</div>
                     </div>
-                    
-                    <!-- User Profile -->
-                    <div class="nav-item mb-3 w-100 user-profile">
-                        <div class="nav-icon"><i class="far fa-user-circle fa-2x"></i></div>
-                        <div class="d-none d-md-block flex-grow-1">
-                            <div class="fw-bold user-name">Katz</div>
-                            <div class="text-secondary username">@Kxtz23</div>
-                        </div>
-                        <div class="d-none d-md-block">
-                            <i class="fas fa-ellipsis-h more-icon"></i>
-                        </div>
-                    </div>
+                  </div>
+                  <button class="follow-btn rounded-pill px-4 py-1 fw-bold border border-primary bg-transparent text-primary">Follow</button>
                 </div>
-            </aside>
-            
-            <!-- Main Section - adjust column classes to take remaining space -->
-            <main class="col-md-6 col-lg-7 main-content">
-                <div class="text-center py-5 text-secondary placeholder-content">
-                    <i class="fas fa-code fa-3x mb-3"></i>
-                    <h4>Main Content Area</h4>
-                    <p>Navbar + Feed will go here</p>
-                </div>
-            </main>
+              </div>
 
-            <!-- Right Aside -->
-            <aside class="col-lg-3 d-none d-lg-block right-aside">
-                <div class="text-center py-5 text-secondary placeholder-content">
-                    <i class="fas fa-search fa-3x mb-3"></i>
-                    <h4>Right Aside</h4>
-                    <p>Search + Trending will go here</p>
-                </div>
-            </aside>
+              <!-- Show More Link -->
+              <div class="show-more p-4 hover-bg rounded-bottom">
+                <a href="#" class="text-primary text-decoration-none fw-semibold">Show more</a>
+              </div>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="footer-links mt-4 pb-4">
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <a href="#" class="text-secondary text-decoration-none">Terms of Service</a>
+                <span class="text-secondary">·</span>
+                <a href="#" class="text-secondary text-decoration-none">Privacy Policy</a>
+                <span class="text-secondary">·</span>
+                <a href="#" class="text-secondary text-decoration-none">Cookie Policy</a>
+                <span class="text-secondary">·</span>
+                <a href="#" class="text-secondary text-decoration-none">Accessibility</a>
+              </div>
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <a href="#" class="text-secondary text-decoration-none">Ads info</a>
+                <span class="text-secondary">·</span>
+                <a href="#" class="text-secondary text-decoration-none">More</a>
+                <span class="text-secondary">·</span>
+                <a href="#" class="text-secondary text-decoration-none">About</a>
+              </div>
+              <div class="copyright text-secondary">
+                © 2026 X Corp.
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Quick Chat Buttons -->
+      <div class="quick-chat">
+        <div class="quick-chat-btn quick-chat-grok" id="quickChatGrokBtn">
+          <img src="Repos/Grok.svg" alt="grok">
+        </div>
+        <div class="quick-chat-btn">
+          <i class="far fa-comment"></i>
+        </div>
+      </div>
+    </div>
+    
+   <!-- Post Detail Modal  -->
+<div id="postDetailModal" class="modal-overlay" style="display: none;">
+    <div class="modal-container">
+        <div class="modal-header">
+            <button class="modal-close" id="modalCloseBtn">&times;</button>
+        </div>
+        <div class="modal-body" id="modal-post-content">
         </div>
     </div>
-</body>
+</div>
+
+<!-- More Options Modal  -->
+<div id="moreOptionsModal" class="modal-left-overlay" style="display: none;">
+  <div class="more-modal-left-container">
+    <div class="more-modal-header">
+      <button class="modal-close" id="moreModalCloseBtn">&times;</button>
+    </div>
+    <div class="more-modal-body">
+      <div class="more-options-list">
+        <div class="more-option-item" data-option="lists">
+          <i class="far fa-list-alt fa-fw"></i>
+          <span>Lists</span>
+        </div>
+        <div class="more-option-item" data-option="communities">
+          <i class="fas fa-users fa-fw"></i>
+          <span>Communities</span>
+        </div>
+        <div class="more-option-item" data-option="bookmarks">
+          <i class="far fa-bookmark fa-fw"></i>
+          <span>Bookmarks</span>
+        </div>
+        <div class="more-option-item" data-option="creator-studio">
+          <i class="fas fa-chart-line fa-fw"></i>
+          <span>Creator Studio</span>
+        </div>
+        <div class="more-option-item" data-option="business">
+          <i class="fas fa-briefcase fa-fw"></i>
+          <span>Business</span>
+        </div>
+        <div class="more-option-item" data-option="ads">
+          <i class="fas fa-ad fa-fw"></i>
+          <span>Ads</span>
+        </div>
+        <div class="more-option-item" data-option="create-space">
+          <i class="fas fa-microphone-alt fa-fw"></i>
+          <span>Create your space</span>
+        </div>
+        <div class="more-option-item" data-option="settings">
+          <i class="fas fa-cog fa-fw"></i>
+          <span>Settings and privacy</span>
+          <i class="fas fa-chevron-right ms-auto text-secondary" style="font-size: 12px;"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Settings Modal Container, This one is hidden initially -->
+<div id="settingsModal" class="settings-modal-overlay" style="display: none;">
+  <div class="settings-modal-card">
+  </div>
+</div>
+
+<!-- Cursor code: Grok Chat Modal -->
+<div id="grokChatModal" class="grok-chat-overlay" style="display: none;">
+  <div class="grok-chat-container">
+    <div class="grok-chat-header">
+      <div class="d-flex align-items-center gap-2">
+        <img src="Repos/Grok.svg" alt="Grok" class="grok-chat-logo">
+        <h5 class="mb-0 fw-bold">Grok</h5>
+      </div>
+      <button class="grok-chat-close" id="grokChatCloseBtn">&times;</button>
+    </div>
+    <div class="grok-chat-body" id="grokChatMessages"></div>
+    <div class="grok-chat-footer">
+      <div class="d-flex gap-2">
+        <input type="text" id="grokChatInput" class="grok-chat-input" placeholder="Ask Grok something..." />
+        <button id="grokChatSendBtn" class="grok-chat-send-btn">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+   <!-- Mobile Bottom Navigation -->
+<div class="mobile-bottom-nav" id="mobileBottomNav">
+    <div class="mobile-nav-item" data-nav="home">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </div>
+    <div class="mobile-nav-item" data-nav="search">
+        <i class="fas fa-search"></i>
+        <span>Search</span>
+    </div>
+    <div class="mobile-nav-item" data-nav="notifications">
+        <i class="far fa-bell"></i>
+        <span>Notifications</span>
+    </div>
+    <div class="mobile-nav-item" data-nav="messages">
+        <i class="far fa-envelope"></i>
+        <span>Messages</span>
+    </div>
+    <div class="mobile-nav-item" data-nav="profile">
+        <i class="far fa-user"></i>
+        <span>Profile</span>
+    </div>
+</div>
+
+<!-- Mobile Menu Overlay (Swipe from left) -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+    <div class="mobile-menu-panel" id="mobileMenuPanel">
+        <div class="mobile-menu-header">
+            <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
+        </div>
+        <div class="mobile-menu-items">
+            <div class="mobile-menu-item" data-nav="home">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </div>
+            <div class="mobile-menu-item" data-nav="explore">
+                <i class="fas fa-hashtag"></i>
+                <span>Explore</span>
+            </div>
+            <div class="mobile-menu-item" data-nav="notifications">
+                <i class="far fa-bell"></i>
+                <span>Notifications</span>
+            </div>
+            <div class="mobile-menu-item" data-nav="messages">
+                <i class="far fa-envelope"></i>
+                <span>Messages</span>
+            </div>
+            <div class="mobile-menu-item" data-nav="grok">
+                <img src="Repos/Grok.svg" alt="grok" style="width: 22px; height: 22px; filter: invert(47%) sepia(84%) saturate(1230%) hue-rotate(179deg) brightness(96%) contrast(94%);">
+                <span>Grok</span>
+            </div>
+            <div class="mobile-menu-item" data-nav="bookmarks">
+                <i class="far fa-bookmark"></i>
+                <span>Bookmarks</span>
+                <span class="badge-off">50% off</span>
+            </div>
+            <div class="mobile-menu-item" data-nav="premium">
+                <img src="Repos/Logo.svg" alt="premium" style="width: 22px; height: 22px;">
+                <span>Premium</span>
+            </div>
+            <div class="mobile-menu-divider"></div>
+            <div class="mobile-menu-item" data-nav="profile">
+                <i class="far fa-user"></i>
+                <span>Profile</span>
+            </div>
+            <div class="mobile-menu-item" data-nav="more">
+                <i class="fas fa-ellipsis-h"></i>
+                <span>More</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Swipe Indicator -->
+<div class="swipe-indicator" id="swipeIndicator"></div>
+
+    <script>
+// ========== POST DATA ==========
+let posts = [
+  {
+    id: 1,
+    username: "Memexe",
+    handle: "@Hyperblaxe",
+    avatar: "Repos/Feed1Profile.jpg",
+    verified: true,
+    timestamp: "1h",
+    content: "Like what next?",
+    mediaType: "video",
+    mediaUrl: "Repos/Feed1.mp4",
+    comments: 24,
+    retweets: 70,
+    likes: 708,
+    polls: 9800,
+    hasGrok: true
+  },
+  {
+    id: 2,
+    username: "4K Wallpapers",
+    handle: "@4Kpapers",
+    avatar: "Repos/Feed2Profile.jpg",
+    verified: true,
+    timestamp: "18h",
+    content: "Aura Farming",
+    mediaType: "image",
+    mediaUrl: "Repos/Feed2.jpg",
+    comments: 5,
+    retweets: 175,
+    likes: 4400,
+    polls: 55000,
+    hasGrok: true
+  },
+  {
+    id: 3,
+    username: "The Best",
+    handle: "@Thebestfigen",
+    avatar: "Repos/Feed3Profile.jpg",
+    verified: true,
+    timestamp: "18h",
+    content: "Give these guys an Oscar.",
+    mediaType: "video",
+    mediaUrl: "Repos/l3hxfMreXANaZnG2.mp4",
+    comments: 117,
+    retweets: 2500,
+    likes: 26000,
+    polls: 1500000,
+    hasGrok: true
+  },
+  {
+    id: 4,
+    username: "EVO",
+    handle: "@Evo",
+    avatar: "Repos/Feed4Profile.jpg",
+    verified: true,
+    timestamp: "March 25",
+    content: "Watch this episode of Evo Legends Powered by @QiddiyaGaming: https://youtube.com/watch?v=GGvEOKAw690",
+    mediaType: "image",
+    mediaUrl: "Repos/Feed4.jpg",
+    comments: 24,
+    retweets: 1,
+    likes: 11,
+    polls: 5400,
+    hasGrok: true,
+    isGold: true
+  },
+  {
+    id: 5,
+    username: "eNCA",
+    handle: "@eNCA",
+    avatar: "Repos/Feed5Profile.jpg",
+    verified: true,
+    timestamp: "1h",
+    content: "[BREAKING NEWS] Cartrack will settle 167 consumer complaints following a National Consumer Commission probe into alleged Consumer Protection Act violations. The company will pay a R5 million administrative fine, refund affected consumers, and cancel certain contracts without",
+    mediaType: "video",
+    mediaUrl: "Repos/gF7S-t7PRJmBAaUL.mp4",
+    comments: 24,
+    retweets: 9,
+    likes: 82,
+    polls: 14000,
+    hasGrok: true
+  }
+];
+
+let currentUser = {
+  username: "Katz",
+  handle: "@Kxtz23",
+  avatar: "Repos/User.jpg"
+};
+
+let currentFeed = 'for-you';
+let currentPage = 'home';
+let exploreVisibleCount = 6;
+let grokChatInitialized = false;
+
+// Cursor code: Explore page dynamic media (internet sources)
+const exploreMediaItems = [
+  {
+    id: 'exp-1',
+    title: 'Mountain trail at sunrise',
+    source: 'Pexels',
+    tag: 'Travel',
+    mediaType: 'image',
+    mediaUrl: 'https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=1200'
+  },
+  {
+    id: 'exp-2',
+    title: 'Ocean wave slow motion',
+    source: 'Pixabay',
+    tag: 'Nature',
+    mediaType: 'video',
+    mediaUrl: 'https://cdn.pixabay.com/video/2021/08/04/83890-585583795_tiny.mp4'
+  },
+  {
+    id: 'exp-3',
+    title: 'Neon city at night',
+    source: 'Pexels',
+    tag: 'Photography',
+    mediaType: 'image',
+    mediaUrl: 'https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&w=1200'
+  },
+  {
+    id: 'exp-4',
+    title: 'Flowers in the wind',
+    source: 'MDN Demo Media',
+    tag: 'Relax',
+    mediaType: 'video',
+    mediaUrl: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4'
+  },
+  {
+    id: 'exp-5',
+    title: 'Coffee and workspace setup',
+    source: 'Unsplash Source',
+    tag: 'Lifestyle',
+    mediaType: 'image',
+    mediaUrl: 'https://source.unsplash.com/1200x900/?coffee,workspace'
+  },
+  {
+    id: 'exp-6',
+    title: 'Street style motion clip',
+    source: 'Pixabay',
+    tag: 'Fashion',
+    mediaType: 'video',
+    mediaUrl: 'https://cdn.pixabay.com/video/2023/09/12/180321-863780676_tiny.mp4'
+  },
+  {
+    id: 'exp-7',
+    title: 'Architecture minimal lines',
+    source: 'Pexels',
+    tag: 'Design',
+    mediaType: 'image',
+    mediaUrl: 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200'
+  },
+  {
+    id: 'exp-8',
+    title: 'Colorful fish underwater',
+    source: 'Pixabay',
+    tag: 'Wildlife',
+    mediaType: 'video',
+    mediaUrl: 'https://cdn.pixabay.com/video/2019/11/27/29211-376286105_tiny.mp4'
+  }
+];
+
+// Cursor code: simple Grok-like chatbot response library
+const grokResponses = [
+  {
+    keywords: ['hello', 'hi', 'hey'],
+    answer: "Hey, I'm Grok. Ask me about this page, posts, or features."
+  },
+  {
+    keywords: ['explore', 'page'],
+    answer: "Explore is dynamic now. It shuffles web media and supports search and load-more."
+  },
+  {
+    keywords: ['post', 'tweet'],
+    answer: "You can create a new post from the composer. It gets added to the top instantly."
+  },
+  {
+    keywords: ['theme', 'light', 'dark'],
+    answer: "Theme settings are available in Settings and privacy. You can switch dark/light mode there."
+  },
+  {
+    keywords: ['who made', 'creator', 'build'],
+    answer: "This Grok-style bot is a minimal scripted assistant with keyword matching."
+  },
+  {
+    keywords: ['help', 'what can you do'],
+    answer: "Try: 'how does explore work', 'how to post', or 'where are settings'."
+  }
+];
+
+// Format number with k/M suffix for display
+function formatNumber(num) {
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(1) + 'M';
+  }
+  if (num >= 1000) {
+    return (num / 1000).toFixed(1) + 'k';
+  }
+  return num.toString();
+}
+
+function createMediaHTML(post) {
+  if (post.mediaType === 'video') {
+    return `
+      <div class="video-container mb-3 rounded-3 overflow-hidden bg-black position-relative">
+        <div class="dynamic-video-wrapper">
+          <video controls preload="metadata" class="dynamic-video w-100">
+            <source src="${post.mediaUrl}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    `;
+  } else if (post.mediaType === 'image') {
+    return `
+      <div class="image-container mb-3 rounded-3 overflow-hidden bg-black">
+        <div class="image-wrapper">
+          <img src="${post.mediaUrl}" alt="feed image" class="feed-image">
+        </div>
+      </div>
+    `;
+  }
+  return '';
+}
+
+function createPostElement(post) {
+  const postDiv = document.createElement('div');
+  postDiv.className = 'feed-card p-3 border-bottom border-secondary';
+  postDiv.setAttribute('data-post-id', post.id);
+  
+  postDiv.innerHTML = `
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <div class="d-flex gap-2">
+        <img src="${post.avatar}" alt="profile" class="profile-img rounded-circle">
+        <div class="d-flex align-items-center gap-1 flex-wrap">
+          <span class="fw-bold user-name">${post.username}</span>
+          ${post.verified ? `<img src="Repos/Checkmark.svg" alt="Checkmark" class="${post.isGold ? 'checkmark-icon-gold' : 'checkmark-icon'}">` : ''}
+          <span class="text-secondary timestamp ms-1">· ${post.timestamp}</span>
+          <span class="text-secondary username ms-1">${post.handle}</span>
+        </div>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        ${post.hasGrok ? '<img src="Repos/Grok.svg" alt="grok" class="grok-feed">' : ''}
+        <i class="fas fa-ellipsis-h more-icon text-secondary"></i>
+      </div>
+    </div>
+    <div class="tweet-content mb-3">
+      <p class="mb-0">${post.content}</p>
+    </div>
+    ${createMediaHTML(post)}
+    <div class="d-flex justify-content-between align-items-center mt-2">
+      <div class="feed-navigation d-flex align-items-center gap-2" data-action="comment" data-post-id="${post.id}">
+        <i class="far fa-comment text-secondary"></i>
+        <span class="text-secondary small" data-count-type="comments">${post.comments}</span>
+      </div>
+      <div class="feed-navigation d-flex align-items-center gap-2" data-action="retweet" data-post-id="${post.id}">
+        <i class="fas fa-retweet text-secondary"></i>
+        <span class="text-secondary small" data-count-type="retweets">${post.retweets}</span>
+      </div>
+      <div class="feed-navigation d-flex align-items-center gap-2" data-action="like" data-post-id="${post.id}">
+        <i class="far fa-heart text-secondary"></i>
+        <span class="text-secondary small" data-count-type="likes">${formatNumber(post.likes)}</span>
+      </div>
+      <div class="feed-navigation d-flex align-items-center gap-2" data-action="poll" data-post-id="${post.id}">
+        <i class="fas fa-poll text-secondary"></i>
+        <span class="text-secondary small" data-count-type="polls">${formatNumber(post.polls)}</span>
+      </div>
+      <div class="feed-navigation" data-action="share" data-post-id="${post.id}">
+        <i class="fas fa-upload text-secondary"></i>
+      </div>
+    </div>
+    <div class="reply-section mt-3 pt-3 border-top border-secondary d-none">
+      <div class="d-flex gap-2">
+        <img src="${currentUser.avatar}" alt="profile" class="rounded-circle reply-avatar">
+        <div class="flex-grow-1">
+          <textarea class="reply-input w-100 bg-transparent border border-secondary rounded-3 p-2 text-white" rows="2" placeholder="Post your reply"></textarea>
+          <div class="d-flex justify-content-end mt-2">
+            <button class="reply-submit-btn bg-primary text-white rounded-pill px-3 py-1 border-0">Reply</button>
+          </div>
+        </div>
+      </div>
+      <div class="comments-container mt-3"></div>
+    </div>
+  `;
+  
+  return postDiv;
+}
+
+// Cursor code: shuffle utility for dynamic Explore ordering
+function shuffleArray(items) {
+  const cloned = [...items];
+  for (let i = cloned.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cloned[i], cloned[j]] = [cloned[j], cloned[i]];
+  }
+  return cloned;
+}
+
+// Cursor code: render one Explore media card
+function createExploreCardElement(item) {
+  const card = document.createElement('div');
+  card.className = 'feed-card p-3 border-bottom border-secondary explore-card';
+  card.innerHTML = `
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-secondary small">${item.tag}</span>
+        <span class="text-secondary small">·</span>
+        <span class="text-secondary small">${item.source}</span>
+      </div>
+      <i class="fas fa-ellipsis-h more-icon text-secondary"></i>
+    </div>
+    <div class="tweet-content mb-2">
+      <p class="mb-0 fw-semibold">${item.title}</p>
+    </div>
+    ${createMediaHTML(item)}
+  `;
+  return card;
+}
+
+// Cursor code: render Explore page dynamically with load-more
+function loadExplorePage(resetOrder = false) {
+  const feedContainer = document.getElementById('feed-container');
+  if (!feedContainer) return;
+
+  if (resetOrder || !window.dynamicExploreItems) {
+    window.dynamicExploreItems = shuffleArray(exploreMediaItems);
+    exploreVisibleCount = 6;
+  }
+
+  feedContainer.innerHTML = '';
+
+  const controls = document.createElement('div');
+  controls.className = 'explore-controls d-flex justify-content-between align-items-center p-3 border-bottom border-secondary';
+  controls.innerHTML = `
+    <div>
+      <h5 class="mb-1 fw-bold">Explore</h5>
+      <p class="mb-0 text-secondary small">Trending media from around the web</p>
+    </div>
+    <button id="refresh-explore-btn" class="follow-btn rounded-pill px-3 py-1 fw-bold border border-primary bg-transparent text-primary">Refresh</button>
+  `;
+  feedContainer.appendChild(controls);
+
+  const visibleItems = window.dynamicExploreItems.slice(0, exploreVisibleCount);
+  visibleItems.forEach((item) => {
+    feedContainer.appendChild(createExploreCardElement(item));
+  });
+
+  if (exploreVisibleCount < window.dynamicExploreItems.length) {
+    const loadMoreWrap = document.createElement('div');
+    loadMoreWrap.className = 'p-3 text-center border-bottom border-secondary';
+    loadMoreWrap.innerHTML = '<button id="explore-load-more-btn" class="follow-btn rounded-pill px-4 py-2 fw-bold border border-primary bg-transparent text-primary">Load more</button>';
+    feedContainer.appendChild(loadMoreWrap);
+  }
+
+  const refreshBtn = document.getElementById('refresh-explore-btn');
+  if (refreshBtn) {
+    refreshBtn.onclick = function() {
+      loadExplorePage(true);
+    };
+  }
+
+  const loadMoreBtn = document.getElementById('explore-load-more-btn');
+  if (loadMoreBtn) {
+    loadMoreBtn.onclick = function() {
+      exploreVisibleCount += 3;
+      loadExplorePage(false);
+    };
+  }
+}
+
+function loadFeed() {
+  const feedContainer = document.getElementById('feed-container');
+  if (!feedContainer) return;
+  feedContainer.innerHTML = '';
+  
+  posts.forEach(post => {
+    feedContainer.appendChild(createPostElement(post));
+  });
+  
+  attachPostEventListeners();
+}
+
+// ========== THEME MANAGEMENT ==========
+function applyTheme(theme) {
+  const body = document.body;
+  
+  if (theme === 'light') {
+    body.classList.add('light-mode');
+    body.classList.remove('dark-mode');
+    body.style.backgroundColor = '#ffffff';
+  } else {
+    body.classList.add('dark-mode');
+    body.classList.remove('light-mode');
+    body.style.backgroundColor = '#000000';
+  }
+  
+  document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+    if (btn.dataset.theme === theme) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+  
+  localStorage.setItem('theme', theme);
+}
+
+function loadSavedTheme() {
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  applyTheme(savedTheme);
+}
+
+function loadSavedFontSize() {
+  const savedSize = localStorage.getItem('fontSize');
+  if (savedSize) {
+    document.body.style.fontSize = savedSize + 'px';
+    const fontSizeSlider = document.getElementById('fontSizeSlider');
+    const fontSizeValue = document.getElementById('fontSizeValue');
+    if (fontSizeSlider && fontSizeValue) {
+      fontSizeSlider.value = savedSize;
+      fontSizeValue.textContent = savedSize + 'px';
+    }
+  }
+}
+
+// ========== MODAL FUNCTIONS ==========
+function openPostModal(postId) {
+  const post = posts.find(p => p.id === postId);
+  if (!post) return;
+  
+  const modalContent = document.getElementById('modal-post-content');
+  modalContent.innerHTML = createModalPostHTML(post);
+  
+  const modal = document.getElementById('postDetailModal');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  
+  attachModalEventListeners(postId, post);
+}
+
+function closeModal() {
+  const modal = document.getElementById('postDetailModal');
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function createModalPostHTML(post) {
+  const demoComments = [
+    { username: "TechGuru", handle: "@techguru", content: "This is amazing!", timestamp: "2h ago", likes: 45 },
+    { username: "SportsFan", handle: "@sportsfan", content: "Couldn't agree more! ", timestamp: "1h ago", likes: 23 },
+    { username: "RandomUser", handle: "@randomuser", content: "Thanks for sharing this!", timestamp: "30m ago", likes: 12 }
+  ];
+  
+  return `
+    <div class="p-4 border-bottom border-secondary">
+      <div class="d-flex gap-3">
+        <img src="${post.avatar}" alt="profile" class="profile-img rounded-circle">
+        <div class="flex-grow-1">
+          <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
+            <span class="fw-bold">${post.username}</span>
+            ${post.verified ? `<img src="Repos/Checkmark.svg" alt="verified" class="${post.isGold ? 'checkmark-icon-gold' : 'checkmark-icon'}">` : ''}
+            <span class="text-secondary">${post.handle}</span>
+            <span class="text-secondary">·</span>
+            <span class="text-secondary">${post.timestamp}</span>
+          </div>
+          <p class="mb-3" style="font-size: 17px; line-height: 1.5;">${post.content}</p>
+          
+          ${post.mediaType === 'video' ? `
+            <div class="video-container rounded-3 overflow-hidden bg-black mb-3">
+              <video controls class="w-100">
+                <source src="${post.mediaUrl}" type="video/mp4">
+              </video>
+            </div>
+          ` : post.mediaType === 'image' ? `
+            <div class="image-container rounded-3 overflow-hidden bg-black mb-3">
+              <img src="${post.mediaUrl}" alt="post image" class="w-100">
+            </div>
+          ` : ''}
+          
+          <div class="d-flex gap-4 mt-3 text-secondary small">
+            <span><i class="far fa-clock me-1"></i> ${post.timestamp}</span>
+            <span><i class="far fa-eye me-1"></i> ${Math.floor(Math.random() * 50000) + 1000} views</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="p-4 border-bottom border-secondary">
+      <div class="d-flex justify-content-around">
+        <div class="feed-navigation d-flex align-items-center gap-2" data-action="comment-modal">
+          <i class="far fa-comment text-secondary"></i>
+          <span class="text-secondary">${post.comments}</span>
+        </div>
+        <div class="feed-navigation d-flex align-items-center gap-2" data-action="retweet-modal">
+          <i class="fas fa-retweet text-secondary"></i>
+          <span class="text-secondary">${post.retweets}</span>
+        </div>
+        <div class="feed-navigation d-flex align-items-center gap-2" data-action="like-modal">
+          <i class="far fa-heart text-secondary"></i>
+          <span class="text-secondary">${formatNumber(post.likes)}</span>
+        </div>
+        <div class="feed-navigation d-flex align-items-center gap-2" data-action="share-modal">
+          <i class="fas fa-upload text-secondary"></i>
+        </div>
+      </div>
+    </div>
+    
+    <div class="p-4 border-bottom border-secondary">
+      <div class="d-flex gap-3">
+        <img src="${currentUser.avatar}" alt="profile" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+        <div class="flex-grow-1">
+          <textarea id="modal-reply-input" class="w-100 bg-transparent border-0 text-white" rows="3" placeholder="Post your reply" style="resize: none; outline: none;"></textarea>
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <div class="d-flex gap-2">
+              <i class="far fa-image text-primary"></i>
+              <i class="far fa-face-smile text-primary"></i>
+            </div>
+            <button id="modal-reply-btn" class="post-btn px-4 py-2 rounded-pill fw-bold border-0">Reply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="p-4">
+      <h6 class="fw-bold mb-3">Replies</h6>
+      <div id="modal-comments-container">
+        ${demoComments.map(comment => `
+          <div class="d-flex gap-3 mb-4">
+            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+              <i class="fas fa-user fa-sm text-secondary"></i>
+            </div>
+            <div class="flex-grow-1">
+              <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
+                <span class="fw-bold small">${comment.username}</span>
+                <span class="text-secondary small">${comment.handle}</span>
+                <span class="text-secondary small">·</span>
+                <span class="text-secondary small">${comment.timestamp}</span>
+              </div>
+              <p class="small mb-2">${comment.content}</p>
+              <div class="d-flex gap-3">
+                <i class="far fa-heart text-secondary small comment-like" style="cursor: pointer;"></i>
+                <span class="text-secondary small comment-likes">${comment.likes}</span>
+                <i class="far fa-comment text-secondary small" style="cursor: pointer;"></i>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function attachModalEventListeners(postId, post) {
+  const closeBtn = document.getElementById('modalCloseBtn');
+  const modalOverlay = document.getElementById('postDetailModal');
+  
+  if (closeBtn) {
+    closeBtn.onclick = function(event) {
+      event.stopPropagation();
+      closeModal();
+    };
+  }
+  
+  if (modalOverlay) {
+    modalOverlay.onclick = function(event) {
+      if (event.target === modalOverlay) {
+        closeModal();
+      }
+    };
+  }
+  
+  const modalReplyBtn = document.getElementById('modal-reply-btn');
+  const modalReplyInput = document.getElementById('modal-reply-input');
+  
+  if (modalReplyBtn && modalReplyInput) {
+    modalReplyBtn.onclick = function(event) {
+      event.stopPropagation();
+      const commentText = modalReplyInput.value.trim();
+      if (commentText) {
+        const commentsContainer = document.getElementById('modal-comments-container');
+        const newComment = document.createElement('div');
+        newComment.className = 'd-flex gap-3 mb-4';
+        newComment.innerHTML = `
+          <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+            <i class="fas fa-user fa-sm text-secondary"></i>
+          </div>
+          <div class="flex-grow-1">
+            <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
+              <span class="fw-bold small">${currentUser.username}</span>
+              <span class="text-secondary small">${currentUser.handle}</span>
+              <span class="text-secondary small">·</span>
+              <span class="text-secondary small">just now</span>
+            </div>
+            <p class="small mb-2">${commentText}</p>
+            <div class="d-flex gap-3">
+              <i class="far fa-heart text-secondary small comment-like" style="cursor: pointer;"></i>
+              <span class="text-secondary small comment-likes">0</span>
+              <i class="far fa-comment text-secondary small" style="cursor: pointer;"></i>
+            </div>
+          </div>
+        `;
+        commentsContainer.prepend(newComment);
+        modalReplyInput.value = '';
+        
+        const commentCountSpan = document.querySelector('#modal-post-content [data-action="comment-modal"] span');
+        if (commentCountSpan) {
+          let currentCount = parseInt(commentCountSpan.textContent);
+          commentCountSpan.textContent = currentCount + 1;
+        }
+        
+        const feedPostCard = document.querySelector(`.feed-card[data-post-id="${postId}"]`);
+        if (feedPostCard) {
+          const feedCommentSpan = feedPostCard.querySelector('[data-action="comment"] span');
+          if (feedCommentSpan) {
+            let currentFeedCount = parseInt(feedCommentSpan.textContent);
+            feedCommentSpan.textContent = currentFeedCount + 1;
+          }
+        }
+        
+        post.comments += 1;
+        
+        const newLikeBtn = newComment.querySelector('.comment-like');
+        const newLikeSpan = newComment.querySelector('.comment-likes');
+        if (newLikeBtn && newLikeSpan) {
+          newLikeBtn.onclick = function(event) {
+            event.stopPropagation();
+            let likeCount = parseInt(newLikeSpan.textContent);
+            if (newLikeBtn.classList.contains('far')) {
+              newLikeBtn.classList.remove('far');
+              newLikeBtn.classList.add('fas');
+              newLikeBtn.style.color = '#f91880';
+              likeCount++;
+            } else {
+              newLikeBtn.classList.remove('fas');
+              newLikeBtn.classList.add('far');
+              newLikeBtn.style.color = '';
+              likeCount--;
+            }
+            newLikeSpan.textContent = likeCount;
+          };
+        }
+      }
+    };
+  }
+  
+  const likeBtn = document.querySelector('#modal-post-content [data-action="like-modal"]');
+  if (likeBtn) {
+    likeBtn.onclick = function(event) {
+      event.stopPropagation();
+      const icon = likeBtn.querySelector('i');
+      const countSpan = likeBtn.querySelector('span');
+      
+      if (icon.classList.contains('far')) {
+        icon.classList.remove('far');
+        icon.classList.add('fas');
+        icon.style.color = '#f91880';
+        post.likes++;
+      } else {
+        icon.classList.remove('fas');
+        icon.classList.add('far');
+        icon.style.color = '';
+        post.likes--;
+      }
+      
+      countSpan.textContent = formatNumber(post.likes);
+      
+      const feedPostCard = document.querySelector(`.feed-card[data-post-id="${postId}"]`);
+      if (feedPostCard) {
+        const feedLikeSpan = feedPostCard.querySelector('[data-action="like"] span');
+        if (feedLikeSpan) feedLikeSpan.textContent = formatNumber(post.likes);
+      }
+    };
+  }
+  
+  const retweetBtn = document.querySelector('#modal-post-content [data-action="retweet-modal"]');
+  if (retweetBtn) {
+    retweetBtn.onclick = function(event) {
+      event.stopPropagation();
+      const icon = retweetBtn.querySelector('i');
+      const countSpan = retweetBtn.querySelector('span');
+      
+      if (!icon.classList.contains('fa-retweet-green')) {
+        icon.style.color = '#00ba7c';
+        icon.classList.add('fa-retweet-green');
+        post.retweets++;
+      } else {
+        icon.style.color = '';
+        icon.classList.remove('fa-retweet-green');
+        post.retweets--;
+      }
+      
+      countSpan.textContent = formatNumber(post.retweets);
+      
+      const feedPostCard = document.querySelector(`.feed-card[data-post-id="${postId}"]`);
+      if (feedPostCard) {
+        const feedRetweetSpan = feedPostCard.querySelector('[data-action="retweet"] span');
+        if (feedRetweetSpan) feedRetweetSpan.textContent = formatNumber(post.retweets);
+      }
+    };
+  }
+  
+  const shareBtn = document.querySelector('#modal-post-content [data-action="share-modal"]');
+  if (shareBtn) {
+    shareBtn.onclick = function(event) {
+      event.stopPropagation();
+      navigator.clipboard.writeText(`${post.username}: ${post.content}`);
+      showNotification('Link copied to clipboard!');
+    };
+  }
+  
+  document.querySelectorAll('#modal-comments-container .comment-like').forEach(like => {
+    like.onclick = function(event) {
+      event.stopPropagation();
+      const icon = this;
+      const countSpan = this.parentElement.querySelector('.comment-likes');
+      let count = parseInt(countSpan.textContent);
+      if (icon.classList.contains('far')) {
+        icon.classList.remove('far');
+        icon.classList.add('fas');
+        icon.style.color = '#f91880';
+        count++;
+      } else {
+        icon.classList.remove('fas');
+        icon.classList.add('far');
+        icon.style.color = '';
+        count--;
+      }
+      countSpan.textContent = count;
+    };
+  });
+}
+
+function showNotification(message) {
+  const notification = document.createElement('div');
+  notification.className = 'position-fixed bottom-0 start-50 translate-middle-x bg-success text-white px-3 py-2 rounded-pill mb-3';
+  notification.style.zIndex = '9999';
+  notification.style.position = 'fixed';
+  notification.style.bottom = '20px';
+  notification.style.left = '50%';
+  notification.style.transform = 'translateX(-50%)';
+  notification.style.backgroundColor = '#00ba7c';
+  notification.style.padding = '8px 16px';
+  notification.style.borderRadius = '9999px';
+  notification.style.fontSize = '14px';
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  setTimeout(() => notification.remove(), 2000);
+}
+
+// Cursor code: Grok chatbot modal helpers
+function appendGrokMessage(text, sender = 'bot') {
+  const messages = document.getElementById('grokChatMessages');
+  if (!messages) return;
+  const bubble = document.createElement('div');
+  bubble.className = `grok-message ${sender === 'user' ? 'grok-message-user' : 'grok-message-bot'}`;
+  bubble.textContent = text;
+  messages.appendChild(bubble);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function getGrokResponse(userText) {
+  const normalized = userText.toLowerCase();
+  const match = grokResponses.find(item =>
+    item.keywords.some(keyword => normalized.includes(keyword))
+  );
+  if (match) return match.answer;
+  return "I am still learning. Try asking about explore, posting, theme, or settings.";
+}
+
+function handleGrokSend() {
+  const input = document.getElementById('grokChatInput');
+  if (!input) return;
+  const text = input.value.trim();
+  if (!text) return;
+
+  appendGrokMessage(text, 'user');
+  input.value = '';
+
+  const response = getGrokResponse(text);
+  setTimeout(() => appendGrokMessage(response, 'bot'), 180);
+}
+
+function closeGrokChatModal() {
+  const modal = document.getElementById('grokChatModal');
+  if (!modal) return;
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function openGrokChatModal() {
+  const modal = document.getElementById('grokChatModal');
+  const messages = document.getElementById('grokChatMessages');
+  const input = document.getElementById('grokChatInput');
+  if (!modal || !messages) return;
+
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+
+  if (!grokChatInitialized) {
+    messages.innerHTML = '';
+    appendGrokMessage("Hi, I'm Grok. Ask me something simple about this app.");
+    grokChatInitialized = true;
+  }
+
+  setTimeout(() => input?.focus(), 50);
+}
+
+function initGrokChat() {
+  const closeBtn = document.getElementById('grokChatCloseBtn');
+  const sendBtn = document.getElementById('grokChatSendBtn');
+  const input = document.getElementById('grokChatInput');
+  const overlay = document.getElementById('grokChatModal');
+  const quickBtn = document.getElementById('quickChatGrokBtn');
+
+  if (quickBtn) {
+    quickBtn.onclick = function(event) {
+      event.stopPropagation();
+      openGrokChatModal();
+    };
+  }
+  if (closeBtn) {
+    closeBtn.onclick = function(event) {
+      event.stopPropagation();
+      closeGrokChatModal();
+    };
+  }
+  if (sendBtn) {
+    sendBtn.onclick = function(event) {
+      event.stopPropagation();
+      handleGrokSend();
+    };
+  }
+  if (input) {
+    input.onkeydown = function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        handleGrokSend();
+      }
+    };
+  }
+  if (overlay) {
+    overlay.onclick = function(event) {
+      if (event.target === overlay) {
+        closeGrokChatModal();
+      }
+    };
+  }
+}
+
+// ========== MORE OPTIONS MODAL ==========
+function openMoreOptionsModal() {
+  const modal = document.getElementById('moreOptionsModal');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  attachMoreOptionsEventListeners();
+}
+
+function closeMoreOptionsModal() {
+  const modal = document.getElementById('moreOptionsModal');
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function attachMoreOptionsEventListeners() {
+  const closeBtn = document.getElementById('moreModalCloseBtn');
+  const modalOverlay = document.getElementById('moreOptionsModal');
+  
+  if (closeBtn) {
+    closeBtn.onclick = function(event) {
+      event.stopPropagation();
+      closeMoreOptionsModal();
+    };
+  }
+  
+  if (modalOverlay) {
+    modalOverlay.onclick = function(event) {
+      if (event.target === modalOverlay) {
+        closeMoreOptionsModal();
+      }
+    };
+  }
+  
+  const options = {
+    'lists': () => showNotification('Lists feature coming soon!'),
+    'communities': () => showNotification('Communities feature coming soon!'),
+    'bookmarks': () => showNotification('Bookmarks feature coming soon!'),
+    'creator-studio': () => showNotification('Creator Studio feature coming soon!'),
+    'business': () => showNotification('Business feature coming soon!'),
+    'ads': () => showNotification('Ads feature coming soon!'),
+    'create-space': () => showNotification('Create your space feature coming soon!'),
+    'settings': () => {
+      closeMoreOptionsModal();
+      openSettingsModal();
+    }
+  };
+  
+  document.querySelectorAll('.more-option-item').forEach(item => {
+    const option = item.dataset.option;
+    item.onclick = function(event) {
+      event.stopPropagation();
+      if (options[option]) {
+        options[option]();
+      }
+    };
+  });
+}
+
+// ========== SETTINGS MODAL ==========
+let currentSettingsTab = 'display';
+
+function openSettingsModal() {
+  const moreDropdown = document.getElementById('moreOptionsModal');
+  const settingsModal = document.getElementById('settingsModal');
+  
+  moreDropdown.style.display = 'none';
+  settingsModal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  
+  renderSettingsContent();
+}
+
+function closeSettingsModal() {
+  const settingsModal = document.getElementById('settingsModal');
+  settingsModal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function renderSettingsContent() {
+  const settingsContainer = document.querySelector('#settingsModal .settings-modal-card');
+  
+  settingsContainer.innerHTML = `
+    <div class="settings-modal-header">
+      <div class="d-flex align-items-center gap-3">
+        <i class="fas fa-arrow-left settings-back-btn" style="cursor: pointer; font-size: 20px;"></i>
+        <h4 class="fw-bold mb-0">Settings and privacy</h4>
+      </div>
+      <button class="settings-close-btn">&times;</button>
+    </div>
+    <div class="settings-modal-body">
+      <div class="settings-layout">
+        <div class="settings-sidebar">
+          <div class="settings-nav-item ${currentSettingsTab === 'display' ? 'active' : ''}" data-settings-tab="display">
+            <i class="fas fa-palette fa-fw"></i>
+            <span>Display</span>
+          </div>
+          <div class="settings-nav-item" data-settings-tab="notifications">
+            <i class="far fa-bell fa-fw"></i>
+            <span>Notifications</span>
+          </div>
+          <div class="settings-nav-item" data-settings-tab="privacy">
+            <i class="fas fa-lock fa-fw"></i>
+            <span>Privacy and safety</span>
+          </div>
+          <div class="settings-nav-item" data-settings-tab="accessibility">
+            <i class="fas fa-universal-access fa-fw"></i>
+            <span>Accessibility</span>
+          </div>
+          <div class="settings-nav-item" data-settings-tab="data">
+            <i class="fas fa-database fa-fw"></i>
+            <span>Data usage</span>
+          </div>
+        </div>
+        
+        <div class="settings-content">
+          ${renderSettingsContentByTab(currentSettingsTab)}
+        </div>
+      </div>
+    </div>
+  `;
+  
+  attachSettingsEventListeners();
+}
+
+function renderSettingsContentByTab(tab) {
+  const currentTheme = localStorage.getItem('theme') || 'dark';
+  const savedFontSize = localStorage.getItem('fontSize') || 15;
+  
+  if (tab === 'display') {
+    return `
+      <div class="settings-section">
+        <h5 class="fw-bold mb-3">Display settings</h5>
+        <div class="settings-group">
+          <div class="settings-item">
+            <div class="settings-item-info">
+              <div class="fw-bold">Theme</div>
+              <div class="text-secondary small">Adjust the appearance of X</div>
+            </div>
+            <div class="theme-toggle-group">
+              <button class="theme-toggle-btn ${currentTheme === 'dark' ? 'active' : ''}" data-theme="dark">
+                <i class="fas fa-moon"></i>
+                <span>Dark</span>
+              </button>
+              <button class="theme-toggle-btn ${currentTheme === 'light' ? 'active' : ''}" data-theme="light">
+                <i class="fas fa-sun"></i>
+                <span>Light</span>
+              </button>
+            </div>
+          </div>
+          
+          <div class="settings-item mt-4">
+            <div class="settings-item-info">
+              <div class="fw-bold">Font size</div>
+              <div class="text-secondary small">Make text easier to read</div>
+            </div>
+            <div class="font-size-controls">
+              <input type="range" min="12" max="20" step="1" value="${savedFontSize}" id="fontSizeSlider" style="width: 200px;">
+              <span id="fontSizeValue" class="ms-2 text-secondary">${savedFontSize}px</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  } else if (tab === 'notifications') {
+    return `
+      <div class="settings-section">
+        <h5 class="fw-bold mb-3">Notifications</h5>
+        <div class="settings-group">
+          <div class="settings-item">
+            <div class="settings-item-info">
+              <div class="fw-bold">Push notifications</div>
+              <div class="text-secondary small">Get alerts on your device</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="pushNotifications">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="settings-item mt-3">
+            <div class="settings-item-info">
+              <div class="fw-bold">Email notifications</div>
+              <div class="text-secondary small">Receive updates via email</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="emailNotifications" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    `;
+  } else {
+    return `
+      <div class="settings-section">
+        <h5 class="fw-bold mb-3">${tab.charAt(0).toUpperCase() + tab.slice(1)} settings</h5>
+        <div class="settings-group">
+          <div class="settings-item">
+            <div class="settings-item-info">
+              <div class="fw-bold">Coming soon</div>
+              <div class="text-secondary small">More settings will be available soon</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function attachSettingsEventListeners() {
+  const backBtn = document.querySelector('.settings-back-btn');
+  if (backBtn) {
+    backBtn.onclick = function() {
+      closeSettingsModal();
+      const moreDropdown = document.getElementById('moreOptionsModal');
+      moreDropdown.style.display = 'block';
+    };
+  }
+  
+  const closeBtn = document.querySelector('.settings-close-btn');
+  if (closeBtn) {
+    closeBtn.onclick = function() {
+      closeSettingsModal();
+    };
+  }
+  
+  const settingsOverlay = document.getElementById('settingsModal');
+  if (settingsOverlay) {
+    settingsOverlay.onclick = function(event) {
+      if (event.target === settingsOverlay) {
+        closeSettingsModal();
+      }
+    };
+  }
+  
+  document.querySelectorAll('.settings-nav-item').forEach(item => {
+    item.onclick = function() {
+      const tab = this.dataset.settingsTab;
+      currentSettingsTab = tab;
+      
+      document.querySelectorAll('.settings-nav-item').forEach(nav => nav.classList.remove('active'));
+      this.classList.add('active');
+      
+      renderSettingsContent();
+    };
+  });
+  
+  document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+    btn.onclick = function(event) {
+      event.stopPropagation();
+      const theme = this.dataset.theme;
+      applyTheme(theme);
+    };
+  });
+  
+  const fontSizeSlider = document.getElementById('fontSizeSlider');
+  const fontSizeValue = document.getElementById('fontSizeValue');
+  if (fontSizeSlider && fontSizeValue) {
+    fontSizeSlider.oninput = function() {
+      const size = this.value;
+      fontSizeValue.textContent = size + 'px';
+      document.body.style.fontSize = size + 'px';
+      localStorage.setItem('fontSize', size);
+    };
+  }
+}
+
+function attachPostEventListeners() {
+  // Comment button - toggle reply section
+  document.querySelectorAll('[data-action="comment"]').forEach(btn => {
+    btn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const postCard = btn.closest('.feed-card');
+      const replySection = postCard.querySelector('.reply-section');
+      replySection.classList.toggle('d-none');
+    });
+  });
+  
+  // Like button - turns RED when liked
+  document.querySelectorAll('[data-action="like"]').forEach(btn => {
+    btn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const icon = btn.querySelector('i');
+      const countSpan = btn.querySelector('span');
+      const postId = parseInt(btn.closest('.feed-card').dataset.postId);
+      const post = posts.find(p => p.id === postId);
+      
+      if (!post) return;
+      
+      if (icon.classList.contains('far')) {
+        icon.classList.remove('far');
+        icon.classList.add('fas');
+        icon.style.color = '#f91880'; // Twitter/X red/pink color
+        post.likes++;
+      } else {
+        icon.classList.remove('fas');
+        icon.classList.add('far');
+        icon.style.color = '';
+        post.likes--;
+      }
+      
+      countSpan.textContent = formatNumber(post.likes);
+    });
+  });
+  
+  // Retweet button - turns GREEN when retweeted
+  document.querySelectorAll('[data-action="retweet"]').forEach(btn => {
+    btn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const icon = btn.querySelector('i');
+      const countSpan = btn.querySelector('span');
+      const postId = parseInt(btn.closest('.feed-card').dataset.postId);
+      const post = posts.find(p => p.id === postId);
+      
+      if (!post) return;
+      
+      if (!icon.classList.contains('fa-retweet-green')) {
+        icon.style.color = '#00ba7c'; // Twitter/X green color
+        icon.classList.add('fa-retweet-green');
+        post.retweets++;
+      } else {
+        icon.style.color = '';
+        icon.classList.remove('fa-retweet-green');
+        post.retweets--;
+      }
+      
+      countSpan.textContent = formatNumber(post.retweets);
+    });
+  });
+  
+  // Reply submit
+  document.querySelectorAll('.reply-submit-btn').forEach(btn => {
+    btn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const replySection = btn.closest('.reply-section');
+      const textarea = replySection.querySelector('.reply-input');
+      const commentsContainer = replySection.querySelector('.comments-container');
+      const commentText = textarea.value.trim();
+      
+      if (commentText) {
+        const commentElement = document.createElement('div');
+        commentElement.className = 'comment-item d-flex gap-2 mt-3';
+        commentElement.innerHTML = `
+          <img src="${currentUser.avatar}" alt="profile" class="rounded-circle comment-avatar">
+          <div class="flex-grow-1 bg-secondary bg-opacity-10 rounded-3 p-2">
+            <div class="d-flex align-items-center gap-2">
+              <span class="fw-bold small">${currentUser.username}</span>
+              <span class="text-secondary small">${currentUser.handle}</span>
+              <span class="text-secondary small">· just now</span>
+            </div>
+            <p class="mb-0 small">${commentText}</p>
+          </div>
+        `;
+        commentsContainer.appendChild(commentElement);
+        textarea.value = '';
+        
+        const postCard = replySection.closest('.feed-card');
+        const postId = parseInt(postCard.dataset.postId);
+        const post = posts.find(p => p.id === postId);
+        
+        if (post) {
+          post.comments++;
+          const commentBtn = postCard.querySelector('[data-action="comment"] span');
+          commentBtn.textContent = post.comments;
+        }
+      }
+    });
+  });
+  
+  // Share button
+  document.querySelectorAll('[data-action="share"]').forEach(btn => {
+    btn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const postCard = btn.closest('.feed-card');
+      const postContent = postCard.querySelector('.tweet-content p').textContent;
+      navigator.clipboard.writeText(postContent);
+      showNotification('Link copied to clipboard!');
+    });
+  });
+  
+  // Post card click - open modal
+  document.querySelectorAll('.feed-card').forEach(card => {
+    card.addEventListener('click', (event) => {
+      if (event.target.closest('.feed-navigation') || 
+          event.target.closest('.reply-section') ||
+          event.target.closest('.video-container') ||
+          event.target.closest('.image-container') ||
+          event.target.closest('video') ||
+          event.target.closest('img')) {
+        return;
+      }
+      const postId = parseInt(card.dataset.postId);
+      openPostModal(postId);
+    });
+  });
+}
+
+function postNewTweet() {
+  const tweetInput = document.getElementById('tweet-input');
+  const content = tweetInput.value.trim();
+  
+  if (!content) return;
+  
+  const newPost = {
+    id: Date.now(),
+    username: currentUser.username,
+    handle: currentUser.handle,
+    avatar: currentUser.avatar,
+    verified: false,
+    timestamp: "just now",
+    content: content,
+    mediaType: null,
+    mediaUrl: null,
+    comments: 0,
+    retweets: 0,
+    likes: 0,
+    polls: 0,
+    hasGrok: false
+  };
+  
+  posts.unshift(newPost);
+  loadFeed();
+  tweetInput.value = '';
+  tweetInput.style.height = 'auto';
+}
+
+function initMoreButton() {
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach(item => {
+    const icon = item.querySelector('.nav-icon i');
+    if (icon && icon.classList.contains('fa-ellipsis-h')) {
+      item.onclick = function(event) {
+        event.stopPropagation();
+        openMoreOptionsModal();
+      };
+    }
+  });
+}
+
+// Cursor code: desktop navigation (Home/Explore switch)
+function initDesktopNavigation() {
+  document.querySelectorAll('.nav-item[data-nav]').forEach(item => {
+    if (item.dataset.nav === 'more') return;
+    item.onclick = function(event) {
+      event.stopPropagation();
+      const nav = item.dataset.nav;
+
+      if (nav === 'home') {
+        switchToPage('home');
+      } else if (nav === 'explore') {
+        switchToPage('explore');
+      } else if (nav === 'grok') {
+        openGrokChatModal();
+      } else {
+        showNotification(`${nav.charAt(0).toUpperCase() + nav.slice(1)} feature coming soon!`);
+      }
+    };
+  });
+}
+
+// Cursor code: central page mode switcher
+function switchToPage(page) {
+  currentPage = page;
+  const composer = document.getElementById('tweet-composer-section');
+  const topTabs = document.getElementById('top-feed-tabs');
+
+  document.querySelectorAll('.nav-item[data-nav]').forEach(item => {
+    item.classList.remove('active');
+  });
+  document.querySelectorAll('.mobile-menu-item[data-nav]').forEach(item => {
+    item.classList.remove('active');
+  });
+
+  const activeDesktop = document.querySelector(`.nav-item[data-nav="${page}"]`);
+  if (activeDesktop) activeDesktop.classList.add('active');
+  const activeMobile = document.querySelector(`.mobile-menu-item[data-nav="${page}"]`);
+  if (activeMobile) activeMobile.classList.add('active');
+
+  if (page === 'explore') {
+    if (composer) composer.style.display = 'none';
+    if (topTabs) topTabs.style.display = 'none';
+    loadExplorePage(true);
+  } else {
+    if (composer) composer.style.display = '';
+    if (topTabs) topTabs.style.display = '';
+    loadFeed();
+  }
+}
+
+// ========== MOBILE NAVIGATION ==========
+function initMobileNavigation() {
+  const bottomNav = document.getElementById('mobileBottomNav');
+  const menuOverlay = document.getElementById('mobileMenuOverlay');
+  const menuPanel = document.getElementById('mobileMenuPanel');
+  const menuClose = document.getElementById('mobileMenuClose');
+  const swipeIndicator = document.getElementById('swipeIndicator');
+  
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  // Only initialize on mobile
+  if (window.innerWidth <= 768) {
+    
+    // Bottom navigation click handlers
+    document.querySelectorAll('.mobile-nav-item').forEach(item => {
+      item.onclick = (event) => {
+        event.stopPropagation();
+        const nav = item.dataset.nav;
+        
+        // Update active state
+        document.querySelectorAll('.mobile-nav-item').forEach(navItem => {
+          navItem.classList.remove('active');
+        });
+        item.classList.add('active');
+        
+        // Handle navigation
+        handleMobileNavigation(nav);
+      };
+    });
+    
+    // Mobile menu items click handlers
+    document.querySelectorAll('.mobile-menu-item').forEach(item => {
+      item.onclick = (event) => {
+        event.stopPropagation();
+        const nav = item.dataset.nav;
+        closeMobileMenu();
+        
+        if (nav === 'more') {
+          // Open more options modal
+          const moreButton = document.querySelector('.nav-item .fa-ellipsis-h')?.closest('.nav-item');
+          if (moreButton) {
+            moreButton.click();
+          }
+        } else if (nav === 'premium') {
+          showNotification('Premium feature coming soon!');
+        } else if (nav === 'grok') {
+          openGrokChatModal();
+        } else {
+          handleMobileNavigation(nav);
+        }
+      };
+    });
+    
+    // Open mobile menu
+    function openMobileMenu() {
+      if (menuOverlay) menuOverlay.classList.add('active');
+      if (menuPanel) menuPanel.classList.add('open');
+      if (swipeIndicator) swipeIndicator.style.opacity = '0';
+    }
+    
+    // Close mobile menu
+    function closeMobileMenu() {
+      if (menuOverlay) menuOverlay.classList.remove('active');
+      if (menuPanel) menuPanel.classList.remove('open');
+    }
+    
+    // Menu close button
+    if (menuClose) {
+      menuClose.onclick = closeMobileMenu;
+    }
+    
+    // Click overlay to close
+    if (menuOverlay) {
+      menuOverlay.onclick = (event) => {
+        if (event.target === menuOverlay) {
+          closeMobileMenu();
+        }
+      };
+    }
+    
+    // Swipe detection
+    document.addEventListener('touchstart', (event) => {
+      touchStartX = event.touches[0].clientX;
+      
+      // Show indicator on edge swipe
+      if (touchStartX < 20 && swipeIndicator) {
+        swipeIndicator.style.opacity = '0.5';
+      }
+    });
+    
+    document.addEventListener('touchmove', (event) => {
+      const currentX = event.touches[0].clientX;
+      const diff = currentX - touchStartX;
+      
+      if (touchStartX < 20 && diff > 30 && menuOverlay && !menuOverlay.classList.contains('active')) {
+        openMobileMenu();
+      }
+    });
+    
+    document.addEventListener('touchend', () => {
+      if (swipeIndicator) swipeIndicator.style.opacity = '0';
+    });
+    
+    // Also support clicking the left edge
+    let leftEdgeTimer;
+    document.addEventListener('click', (event) => {
+      if (event.clientX < 20 && menuOverlay && !menuOverlay.classList.contains('active')) {
+        if (leftEdgeTimer) clearTimeout(leftEdgeTimer);
+        leftEdgeTimer = setTimeout(() => {
+          openMobileMenu();
+        }, 100);
+      }
+    });
+  }
+}
+
+function handleMobileNavigation(nav) {
+  switch(nav) {
+    case 'home':
+      // Scroll to top and refresh feed
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Reset to For You feed
+      document.querySelector('[data-feed="for-you"]')?.click();
+      break;
+    case 'search':
+      // Focus search input
+      const searchInput = document.querySelector('.search-input');
+      if (searchInput) {
+        searchInput.focus();
+        searchInput.scrollIntoView({ behavior: 'smooth' });
+      }
+      break;
+    case 'notifications':
+      showNotification('Notifications feature coming soon!');
+      break;
+    case 'messages':
+      showNotification('Messages feature coming soon!');
+      break;
+    case 'profile':
+      showNotification('Profile feature coming soon!');
+      break;
+    case 'explore':
+      switchToPage('explore');
+      break;
+    default:
+      break;
+  }
+}
+
+// Update mobile nav active state based on scroll
+function updateMobileNavOnScroll() {
+  const scrollPosition = window.scrollY;
+  const homeNav = document.querySelector('.mobile-nav-item[data-nav="home"]');
+  const searchNav = document.querySelector('.mobile-nav-item[data-nav="search"]');
+  
+  if (scrollPosition < 100) {
+    homeNav?.classList.add('active');
+    searchNav?.classList.remove('active');
+  }
+}
+
+// ========== INITIALIZE MOBILE ==========
+function checkAndInitMobile() {
+  if (window.innerWidth <= 768) {
+    initMobileNavigation();
+    window.addEventListener('scroll', updateMobileNavOnScroll);
+  }
+}
+
+// Auto-resize textarea
+const tweetInputElement = document.getElementById('tweet-input');
+if (tweetInputElement) {
+  tweetInputElement.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = Math.min(this.scrollHeight, 150) + 'px';
+  });
+  
+  tweetInputElement.addEventListener('keydown', (event) => {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+      event.preventDefault();
+      postNewTweet();
+    }
+  });
+}
+
+// Post button click
+const postTweetBtn = document.getElementById('post-tweet-btn');
+if (postTweetBtn) {
+  postTweetBtn.addEventListener('click', postNewTweet);
+}
+
+// Feed filtering
+document.querySelectorAll('[data-feed]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFeed = btn.dataset.feed;
+    
+    if (currentFeed === 'for-you') {
+      loadFeed();
+    } else if (currentFeed === 'following') {
+      const followingPosts = posts.filter(p => p.id === 1 || p.id === 3 || p.id === 5);
+      const feedContainer = document.getElementById('feed-container');
+      feedContainer.innerHTML = '';
+      followingPosts.forEach(post => {
+        feedContainer.appendChild(createPostElement(post));
+      });
+      attachPostEventListeners();
+    } else if (currentFeed === 'communities') {
+      const communityPosts = posts.filter(p => p.id === 4);
+      const feedContainer = document.getElementById('feed-container');
+      feedContainer.innerHTML = '';
+      communityPosts.forEach(post => {
+        feedContainer.appendChild(createPostElement(post));
+      });
+      attachPostEventListeners();
+    }
+  });
+});
+
+// Search functionality
+const searchInputElement = document.querySelector('.search-input');
+if (searchInputElement) {
+  searchInputElement.addEventListener('input', (event) => {
+    const searchTerm = event.target.value.toLowerCase().trim();
+    if (searchTerm === '') {
+      loadFeed();
+      return;
+    }
+    
+    const filteredPosts = posts.filter(post => 
+      post.content.toLowerCase().includes(searchTerm) ||
+      post.username.toLowerCase().includes(searchTerm) ||
+      post.handle.toLowerCase().includes(searchTerm)
+    );
+    
+    const feedContainer = document.getElementById('feed-container');
+    feedContainer.innerHTML = '';
+    filteredPosts.forEach(post => {
+      feedContainer.appendChild(createPostElement(post));
+    });
+    attachPostEventListeners();
+  });
+}
+
+// Follow button functionality
+document.querySelectorAll('.follow-btn').forEach(btn => {
+  btn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    if (btn.textContent === 'Follow') {
+      btn.textContent = 'Following';
+      btn.classList.remove('bg-transparent', 'text-primary', 'border-primary');
+      btn.classList.add('bg-primary', 'text-white', 'border-0');
+    } else {
+      btn.textContent = 'Follow';
+      btn.classList.remove('bg-primary', 'text-white', 'border-0');
+      btn.classList.add('bg-transparent', 'text-primary', 'border-primary');
+    }
+  });
+});
+
+// Initialize on DOM load
+document.addEventListener('DOMContentLoaded', () => {
+  loadFeed();
+  initMoreButton();
+  initDesktopNavigation();
+  initGrokChat();
+  loadSavedTheme();
+  loadSavedFontSize();
+  checkAndInitMobile();
+  
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      const modal = document.getElementById('postDetailModal');
+      if (modal && modal.style.display === 'flex') {
+        closeModal();
+      }
+      const moreModal = document.getElementById('moreOptionsModal');
+      if (moreModal && moreModal.style.display === 'flex') {
+        closeMoreOptionsModal();
+      }
+      const settingsModal = document.getElementById('settingsModal');
+      if (settingsModal && settingsModal.style.display === 'flex') {
+        closeSettingsModal();
+      }
+      const grokChatModal = document.getElementById('grokChatModal');
+      if (grokChatModal && grokChatModal.style.display === 'flex') {
+        closeGrokChatModal();
+      }
+    }
+  });
+  
+  document.addEventListener('loadedmetadata', (event) => {
+    if (event.target.tagName === 'VIDEO') {
+      const video = event.target;
+      const wrapper = video.closest('.dynamic-video-wrapper');
+      if (wrapper && video.videoWidth && video.videoHeight) {
+        const aspectRatio = (video.videoHeight / video.videoWidth) * 100;
+        wrapper.style.paddingBottom = aspectRatio + '%';
+        video.style.position = 'absolute';
+        video.style.top = '0';
+        video.style.left = '0';
+        video.style.width = '100%';
+        video.style.height = '100%';
+      }
+    }
+  });
+});
+
+// Re-initialize on resize
+window.addEventListener('resize', () => {
+  const existingNav = document.getElementById('mobileBottomNav');
+  if (window.innerWidth <= 768 && !existingNav) {
+    location.reload();
+  }
+});
+</script>
+  </body>
 </html>
