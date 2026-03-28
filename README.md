@@ -1,21 +1,13 @@
-X Clone - exTwitter
+- X Clone - exTwitter
 I have built a complete front-end clone of X (formerly Twitter), replicating pretty much everything you would expect from the real platform. Every piece of the interface is there—the left navigation sidebar with all its interactive menu items, the central feed where posts show up, and the right sidebar with search, trending topics, and suggested accounts to follow.
-
-
 
 How the Layout Works
 I followed X's signature three-column layout, building everything with Bootstrap 5's grid system. The layout handles responsive behavior smoothly, adjusting spacing and visibility based on screen size without needing custom code for every breakpoint.
 
-
-
 Desktop Layout
 The left column holds the main navigation menu with icons and text labels, and it stays fixed while scrolling—exactly like X's sidebar. The middle column contains the main feed area with a sticky top navigation bar showing "For you," "Following," and "Communities" tabs, plus the tweet composer and the scrolling feed of posts. The right column shows supplementary content: a search bar, a "Subscribe to Premium" promotional card, trending topics in the "What's happening" section, suggested accounts to follow, and footer links.
 
-
-
 Bootstrap's responsive grid system makes sure this layout adapts across devices. On tablets, the right column disappears to give more room to the main feed. On mobile, both side columns are hidden entirely, replaced by a bottom navigation bar and a menu panel that users can access by swiping.
-
-
 
 Custom CSS Work
  I wrote custom CSS for the X-specific styling and downloaded svg's for compinents that Bootstrap doesn't cover. Sticky positioning keeps the sidebars fixed during scrolling. Hover effects on navigation items and post cards provide visual feedback when users interact with them. Modal animations make the post detail view, settings panel, and mobile menu feel smooth when they open and close.
