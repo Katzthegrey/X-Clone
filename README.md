@@ -1,8 +1,8 @@
 # X Clone - exTwitter
 
-I have built a complete front-end clone of X (formerly Twitter), replicating pretty much everything you would expect from the real platform. Every piece of the interface is there—the left navigation sidebar with all its interactive menu items, the central feed where posts show up, and the right sidebar with search, trending topics, and suggested accounts to follow.
+I have built a complete front-end clone of X (exTwitter), replicating pretty much everything you would expect from the real platform. Every piece of the interface is there—the left navigation sidebar with all its interactive menu items, the central feed where posts show up, and the right sidebar with search, trending topics, and suggested accounts to follow.
 
-# How the Layout Works
+## How the Layout Works
 
 I followed X's signature three-column layout, building everything with Bootstrap 5's grid system. The layout handles responsive behavior smoothly, adjusting spacing and visibility based on screen size without needing custom code for every breakpoint.
 
